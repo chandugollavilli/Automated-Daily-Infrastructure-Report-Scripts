@@ -1,0 +1,76 @@
+direction: right
+
+# Daily Infrastructure Report Data Flow
+
+CronJob: {
+  shape: cloud
+  label: "Scheduled Trigger (Cron Job)"
+}
+
+MainScript: {
+  shape: rectangle
+  label: "Main Python Script"
+}
+
+DataCollectionScripts: {
+  shape: rectangle
+  label: "Data Collection Scripts"
+}
+
+TargetServers: {
+  shape: cylinder
+  label: "Target Servers (Linux/Windows)"
+}
+
+TempDataStorage: {
+  shape: cylinder
+  label: "Temporary Data Storage (JSON/CSV)"
+  tooltip: "daily_infrastructure_report/data"
+}
+
+ReportGenerationScript: {
+  shape: rectangle
+  label: "Report Generation Script"
+}
+
+PDFReport: {
+  shape: document
+  label: "PDF Report"
+  tooltip: "daily_infrastructure_report/reports"
+}
+
+ExcelReport: {
+  shape: document
+  label: "Excel Report"
+  tooltip: "daily_infrastructure_report/reports"
+}
+
+EmailScript: {
+  shape: rectangle
+  label: "Email Distribution Script"
+}
+
+SMTP_Server: {
+  shape: cloud
+  label: "SMTP Server"
+}
+
+AdminGroup: {
+  shape: person
+  label: "System Admin Group"
+}
+
+CronJob -> MainScript: "Triggers daily"
+MainScript -> DataCollectionScripts: "Executes"
+DataCollectionScripts -> TargetServers: "Collects data via SSH/WinRM"
+TargetServers -> DataCollectionScripts: "Returns metrics"
+DataCollectionScripts -> TempDataStorage: "Saves raw data"
+TempDataStorage -> ReportGenerationScript: "Reads raw data"
+ReportGenerationScript -> PDFReport: "Generates"
+ReportGenerationScript -> ExcelReport: "Generates"
+PDFReport -> EmailScript: "Attached to email"
+ExcelReport -> EmailScript: "Attached to email"
+EmailScript -> SMTP_Server: "Sends email"
+SMTP_Server -> AdminGroup: "Delivers reports"
+
+

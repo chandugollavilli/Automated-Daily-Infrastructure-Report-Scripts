@@ -1,0 +1,38 @@
+{
+    "192.168.1.101": [
+        {
+            "filesystem": "/dev/sda1",
+            "size": "215G",
+            "used": "60G",
+            "avail": "14G",
+            "use_percent": "16%",
+            "mounted_on": "/"
+        },
+        {
+            "filesystem": "/dev/sdb1",
+            "size": "764G",
+            "used": "351G",
+            "avail": "90G",
+            "use_percent": "28%",
+            "mounted_on": "/data"
+        }
+    ],
+    "192.168.1.102": [
+        {
+            "filesystem": "/dev/sda1",
+            "size": "195G",
+            "used": "26G",
+            "avail": "19G",
+            "use_percent": "32%",
+            "mounted_on": "/"
+        },
+        {
+            "filesystem": "/dev/sdb1",
+            "size": "899G",
+            "used": "102G",
+            "avail": "137G",
+            "use_percent": "62%",
+            "mounted_on": "/data"
+        }
+    ]
+}
